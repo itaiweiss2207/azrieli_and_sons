@@ -1,0 +1,16 @@
+RATES = "rates"
+NEW_DRIVERS = "new_drivers"
+OLD_DRIVERS = "old_drivers"
+TRUCK_NAME = "truck_name"
+COL_NAMES = ['Unnamed: 0', 'customer', 'driver_id', 'end_time', 'km', 'start_time', TRUCK_NAME]
+PATTERN_FOR_NAME = '2015_(.*).csv'
+BIRTH_DATE = "birth_date"
+TIME = "time"
+GENDER = "gender"
+ID = "id"
+START_TIME = "start_time"
+END_TIME = "end_time"
+KM = "km"
+MAX_COLS_TO_DISPLAY = 10
+SECONDS_IN_HOUR = 3600
+SPEED = "speed"
