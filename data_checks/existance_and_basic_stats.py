@@ -15,6 +15,6 @@ def print_head_and_description():
         check_table_exist(table)
 
 
-
+#TODO delete
 
 

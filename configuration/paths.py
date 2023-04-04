@@ -17,4 +17,6 @@ RATES_FILE_FROM_OUTSIDE = os.path.join(FILES_DIR, r"taarif.csv")
 CSV = "*"
 TRIPS_DATA_DIR = "trips_data"
 TRUCK_PATH_INSIDE = os.path.join(DOT_DOT, TRIPS_DATA_DIR, CSV)
-TRUCK_PATH_OUTSIDE = os.path.join(TRIPS_DATA_DIR, CSV)
+TRUCK_PATH_OUTSIDE = os.path.join(TRIPS_DATA_DIR,CSV)
+TRIPS_FROM_INSIDE = r".\trips_data" #TODO to join
+CON_FOR_DRIVE_PATH_GPT = os.path.join(TRIPS_DATA_DIR)

@@ -1,10 +1,11 @@
 # imports
+import datetime
+import numpy as np
 import pandas as pd
 from configuration.constants import *
 
-
-
-def remove_entire_nan_rows(df: pd.DataFrame):
+#TODO return hints
+def remove_entire_nan_rows(df: pd.DataFrame)->pd.DataFrame:
     """
     removes nan rows
     :param df:
@@ -52,20 +53,18 @@ def missing_drive_data(df: pd.DataFrame):
     return df
 
 
-def time_for_drives(df: pd.DataFrame):
+def nans_in_time(df: pd.DataFrame):
     """
-    replace nan in start_time and end_time with the other, and convert them to datetime
+
     :param df:
-    :return: the updated df
+    :return:
     """
-    df[START_TIME] = df.apply(lambda x: x[END_TIME] if (
-                (pd.isna(x[START_TIME])) & (not pd.isna(x[END_TIME]))) else x[
-        START_TIME], axis=1)
-    df[END_TIME] = df.apply(lambda x: x[START_TIME] if (
-                (pd.isna(x[END_TIME])) & (not pd.isna(x[START_TIME]))) else x[
-        END_TIME], axis=1)
-    df[START_TIME] = pd.to_datetime(df[START_TIME], infer_datetime_format=True)
-    df[END_TIME] = pd.to_datetime(df[END_TIME], infer_datetime_format=True)
+    print(df.head(5))
+    df[START_TIME] = df[START_TIME].apply(
+        lambda x: pd.to_datetime(x, infer_datetime_format=True) if pd.notna(x) else 0)
+    df[END_TIME] = df[END_TIME].apply(
+        lambda x: pd.to_datetime(x, infer_datetime_format=True) if pd.notna(x) else 0)
+
+    df[TOTAL_TIME] = df[[START_TIME, END_TIME]].apply(
+        lambda x: ((x[END_TIME] - x[START_TIME]).total_seconds()) / SECONDS_IN_HOUR if x[START_TIME]!= 0 and x[END_TIME]!=0 else 0, axis=1)
     return df
-
-
